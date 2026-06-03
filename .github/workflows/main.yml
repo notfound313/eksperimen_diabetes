@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --global user.name ${{ secrets.username }}
           git config --global user.email ${{ secrets.email }}
-          git add preprocessing/diabetes_preprocessing/
+          git add preprocessing/diabetes_preprocessing
           git commit -m "Auto-preprocessing: Updated train.csv and test.csv"
           git push origin main
           

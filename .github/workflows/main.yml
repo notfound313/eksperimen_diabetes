@@ -32,7 +32,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run preprocessing script
-        run: python preprocessing/automate_preprocessing.py dataset.csv
+        run: python preprocessing/automate_preprocessing.py diabetes_raw.csv
 
       - name: Commit and push preprocessed data
         run: |

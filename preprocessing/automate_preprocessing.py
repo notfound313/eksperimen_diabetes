@@ -10,7 +10,7 @@ from sklearn.preprocessing import StandardScaler
 def run_preprocessing(input_filepath, output_dir='diabetes_preprocessing'):    
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-        print(f"Folder '{output_dir}' sukses dibuat.")    
+        print(f"Folder '{output_dir}' berhasil dibuat.")    
     
     if not os.path.exists(input_filepath):
         print(f"Error: File '{input_filepath}' tidak ditemukan. Silakan periksa kembali path file Anda.")

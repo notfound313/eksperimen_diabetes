@@ -1,0 +1,47 @@
+name: Auto Preprocessing Dataset
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'diabetes_raw.csv'
+      - 'preprocessing/automate_preprocessing.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run preprocessing script
+        run: python preprocessing/automate_preprocessing.py dataset.csv
+
+      - name: Commit and push preprocessed data
+        run: |
+          git config --global user.name ${{ secrets.username }}
+          git config --global user.email ${{ secrets.email }}
+          git add diabetes_preprocessing/
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Auto-preprocessing: Updated train.csv and test.csv [skip ci]"
+            git push 
+          else
+            echo "Tidak ada perubahan pada data hasil preprocessing."
+          

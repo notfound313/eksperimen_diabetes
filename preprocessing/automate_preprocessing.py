@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 
-def run_preprocessing(input_filepath, output_dir='diabetes_preprocessing'):    
+def run_preprocessing(input_filepath, output_dir='preprocessing/diabetes_preprocessing'):    
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
         print(f"Folder '{output_dir}' berhasil dibuat.")    

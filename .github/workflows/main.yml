@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt; fi
+          pip install -r requirements.txt
 
       - name: Run preprocessing script
         run: python preprocessing/automate_preprocessing.py dataset.csv
@@ -44,4 +44,4 @@ jobs:
             git push 
           else
             echo "Tidak ada perubahan pada data hasil preprocessing."
-          fi
+          
